@@ -1,3 +1,4 @@
+// EMIChart.js
 import React from "react";
 import {
   LineChart,
@@ -10,21 +11,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-export default function EMIChart() {
-  // Sample Data (Tenure in years, EMI fixed, Interest decreases, Principal increases)
-  const data = [
-    { year: 1, EMI: 87254, Interest: 55939, Principal: 41315 },
-    { year: 2, EMI: 87254, Interest: 52000, Principal: 45000 },
-    { year: 3, EMI: 87254, Interest: 47000, Principal: 50000 },
-    { year: 4, EMI: 87254, Interest: 43000, Principal: 54000 },
-    { year: 5, EMI: 87254, Interest: 38000, Principal: 59000 },
-    { year: 6, EMI: 87254, Interest: 32000, Principal: 65000 },
-    { year: 7, EMI: 87254, Interest: 25000, Principal: 72000 },
-    { year: 8, EMI: 87254, Interest: 17000, Principal: 80000 },
-    { year: 9, EMI: 87254, Interest: 10000, Principal: 87000 },
-    { year: 10, EMI: 87254, Interest: 5000, Principal: 92000 },
-  ];
-
+export default function EMIChart({ data }) {
   return (
     <div style={{ width: "100%", height: 400 }}>
       <h3 className="text-xl font-bold text-center mb-4">EMI Chart</h3>
@@ -47,12 +34,7 @@ export default function EMIChart() {
           />
           <Tooltip formatter={(value) => `₹${value.toLocaleString()}`} />
           <Legend />
-          <Line
-            type="monotone"
-            dataKey="EMI"
-            stroke="#00bcd4"
-            strokeWidth={2}
-          />
+          <Line type="monotone" dataKey="EMI" stroke="#00bcd4" strokeWidth={2} />
           <Line
             type="monotone"
             dataKey="Interest"

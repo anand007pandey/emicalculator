@@ -1,10 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import { InputGroup, FormControl, Form } from "react-bootstrap";
 
-export default function Rangesbar() {
-  const [loanAmount, setLoanAmount] = useState(7500000);
-  const [tenure, setTenure] = useState(10);
-  const [interest, setInterest] = useState(9.55);
+export default function Rangesbar({
+    loanAmount,
+    setLoanAmount,
+    tenure,
+    setTenure,
+    interest,
+    setInterest,
+  }) {
+    const handleLoanChange = (e) => {
+      const rawValue = e.target.value.replace(/,/g, "");
+      if (!isNaN(rawValue)) setLoanAmount(Number(rawValue));
+    };
 
   return (
     <div className="firstleft">
@@ -14,7 +22,7 @@ export default function Rangesbar() {
           <label>Home Loan Amount</label>
           <InputGroup className="mb-3">
             <InputGroup.Text id="basic-addon1">₹</InputGroup.Text>
-            <Form.Control value={loanAmount} aria-describedby="basic-addon1" />
+            <Form.Control value={loanAmount} onChange={handleLoanChange} aria-describedby="basic-addon1" />
           </InputGroup>
         </div>
         <input
