@@ -1,5 +1,6 @@
 import React from "react";
 import { InputGroup, FormControl, Form } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 
 export default function Rangesbar({
     loanAmount,
@@ -13,13 +14,13 @@ export default function Rangesbar({
       const rawValue = e.target.value.replace(/,/g, "");
       if (!isNaN(rawValue)) setLoanAmount(Number(rawValue));
     };
-
+ const { t } = useTranslation();
   return (
+    <>
     <div className="firstleft">
-      <h2>Home Loan EMI Calculator</h2>
       <div className="slider-box">
         <div className="rightinput">
-          <label>Home Loan Amount</label>
+          <label>{t("ranges.homeloanamt")}</label>
           <InputGroup className="mb-3">
             <InputGroup.Text id="basic-addon1">₹</InputGroup.Text>
             <Form.Control value={loanAmount} onChange={handleLoanChange} aria-describedby="basic-addon1" />
@@ -46,7 +47,7 @@ export default function Rangesbar({
 
       <div className="slider-box">
         <div className="rightinput middle">
-          <label>Loan Tenure</label>
+          <label>{t("ranges.loanten")}</label>
           <InputGroup className="mb-3">
             <InputGroup.Text>$</InputGroup.Text>
             <Form.Control value={tenure} />
@@ -74,7 +75,7 @@ export default function Rangesbar({
 
       <div className="slider-box">
         <div className="rightinput">
-          <label>Interest Rate</label>
+          <label>{t("ranges.intrate")}</label>
           <InputGroup className="mb-3">
             <InputGroup.Text id="basic-addon2">%</InputGroup.Text>
             <Form.Control value={interest} aria-describedby="basic-addon1" />
@@ -105,5 +106,6 @@ export default function Rangesbar({
         </div>
       </div>
     </div>
+    </>
   );
 }

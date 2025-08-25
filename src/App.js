@@ -1,3 +1,5 @@
+import "./i18n"; // load translations
+import { useTranslation } from "react-i18next";
 import React, { useState,useMemo } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import RangesBar from "./components/RangeInput";
@@ -5,12 +7,17 @@ import Calculation from "./components/DetailedCalc";
 import EMIChart from "./components/Charts";
 import "./styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import AmortizationTable from "./components/AmortizationTable";
 
 function App() {
     const [loanAmount, setLoanAmount] = useState(500000);
     const [tenure, setTenure] = useState(5);
     const [interest, setInterest] = useState(7);
+    const { t, i18n } = useTranslation();
 
+    const changeLanguage = (lang) => {
+      i18n.changeLanguage(lang);
+    };
     // Calculation logic in App
     const calculateEMI = (P, annualRate, years) => {
       const N = years * 12;
@@ -61,7 +68,16 @@ function App() {
 
   return (
     <Container>
+      <div style={{ textAlign: "right", margin: "10px" }}>
+        <select onChange={(e) => changeLanguage(e.target.value)}>
+          <option value="en">English</option>
+          <option value="hi">हिन्दी</option>
+          <option value="ta">தமிழ்</option>
+          <option value="mr">मराठी</option>
+        </select>
+      </div>
       <Row>
+        <h2>{t("common.homeloancalculator")}</h2>
         <Col md={8}>
           <RangesBar 
             loanAmount={loanAmount}
@@ -84,6 +100,18 @@ function App() {
       <Row>
         <Col md={8}>
             <EMIChart data={chartData} />
+        </Col>
+      </Row>
+
+      <Row>
+        <Col md={12} className="emitable">
+          <AmortizationTable
+            loanAmount={loanAmount}
+            interest={interest}
+            tenure={tenure}
+            emi={emi}
+            formatCurrency={formatCurrency}
+          />
         </Col>
       </Row>
     </Container>

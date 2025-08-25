@@ -7,7 +7,7 @@ table {
 .dtil-info {
   border: 1px solid #ccc;
   text-align: center;
-  min-height: 482px;
+  min-height: 457px;
   /* padding: 1rem; */
 }
 .dtil-info h3 {
@@ -22,12 +22,12 @@ table {
   padding: 1rem;
 }
 .info-sec p {
-  font-size: 12px;
+  font-size: 18px;
 }
 .txt-val {
   color: deepskyblue;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 21px;
 }
 .slider-box {
   margin: 30px 0;
@@ -101,8 +101,27 @@ h2 {
 .rightinput label {
   float: left;
   display: inline-block;
+  font-size: 18px;
 }
 
 .rightinput .mb-3.input-group .input-group-text {
   font-weight: bold;
+}
+.emitable.col-md-12 {
+    margin: 4rem 0;
+}
+.table td, .table th {
+    text-align: center;
+}
+
+.table>thead>tr>th {
+    background-color: deepskyblue;
+    color: #fff;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.text-center {
+    text-align: center !important;
+    margin: 1rem 0;
 }

@@ -1,5 +1,6 @@
 // EMIChart.js
 import React from "react";
+import { useTranslation } from "react-i18next";
 import {
   LineChart,
   Line,
@@ -12,9 +13,10 @@ import {
 } from "recharts";
 
 export default function EMIChart({ data }) {
+   const { t } = useTranslation();
   return (
     <div style={{ width: "100%", height: 400 }}>
-      <h3 className="text-xl font-bold text-center mb-4">EMI Chart</h3>
+      <h3 className="text-xl font-bold text-center mb-4">{t("common.emichart")}</h3>
       <ResponsiveContainer>
         <LineChart
           data={data}

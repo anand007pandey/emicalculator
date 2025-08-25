@@ -1,26 +1,28 @@
-import { React, useState } from "react";
+import { React} from "react";
+import { useTranslation } from "react-i18next";
 
 function Calculation({ emi, totalInterest, totalPayment, formatCurrency }) {
+  const { t } = useTranslation();
   return (
     <div class="dtil-info">
-      <h3>Detailed Calculations</h3>
+      <h3>{t("common.detailedCalculations")}</h3>
       <div class="info-sec">
         <div class="txt-val" id="totalEmiDef">
           {formatCurrency(emi)}
         </div>
-        <p>EMI</p>
+        <p>{t("calculation.emi")}</p>
       </div>
       <div class="info-sec">
         <div class="txt-val" id="totalInterestPreEmiDef">
           {formatCurrency(totalInterest)}
         </div>
-        <p>Total interest payable over the loan term</p>
+        <p>{t("calculation.totalInterest")}</p>
       </div>
       <div class="info-sec">
         <div class="txt-val" id="totalPayOfLoanDef">
          {formatCurrency(totalPayment)}
         </div>
-        <p>Total payments made over the loan term</p>
+        <p>{t("calculation.totalPayment")}</p>
       </div>
     </div>
   );
